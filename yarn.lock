@@ -5235,7 +5235,7 @@ gatsby-plugin-sass@^2.1.24:
     "@babel/runtime" "^7.7.4"
     sass-loader "^7.3.1"
 
-gatsby-plugin-sharp@^2.2.20:
+gatsby-plugin-sharp@^2.3.4:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.3.4.tgz#1b9e21b56145413b4f1807c685574956a2efba7d"
   integrity sha512-F70ZX0bpb0jMN9xJD3ZDfi3M420Dn9QQkbEIz0lhymL+IZg8u59jlD3HZ/VUGQBPxp1E/etjC/E8P6KOY1Y6IA==
@@ -5322,7 +5322,7 @@ gatsby-telemetry@^1.1.40:
     stack-utils "1.0.2"
     uuid "3.3.3"
 
-gatsby-transformer-sharp@^2.2.13:
+gatsby-transformer-sharp@^2.3.6:
   version "2.3.6"
   resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-2.3.6.tgz#5747e40da295eb21f3187c38fec3ca5d363ee2a4"
   integrity sha512-7BnppSw9RFE6QnsFMRcH8MXWQZZM9KCW53xu95abHEslHo8lYnn5vKaeuCrNMKa+jwaMcmllvYfPmTsZquaH3A==
