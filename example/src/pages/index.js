@@ -1,8 +1,8 @@
 import React from "react"
-import TV from 'gatsby-theme-minimal/src/components/TV.js'
+import Index from 'gatsby-theme-minimal/src/pages/index.js'
 
 export default () => (
     <div>
-        <TV />
+        <Index />
     </div>
 )
