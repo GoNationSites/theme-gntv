@@ -1,3 +1,8 @@
 import React from "react"
+import TV from 'gatsby-theme-minimal/src/components/TV.js'
 
-export default () => <div>Homepage in a user's site</div>
+export default () => (
+    <div>
+        <TV />
+    </div>
+)

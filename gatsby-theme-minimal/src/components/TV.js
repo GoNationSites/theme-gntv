@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Index = () => {
+const TV = () => {
     return (
         <div>
-            <h1>TV!!</h1>
+            <h1>TV.JS!!</h1>
         </div>
     )
 }
 
-export default Index
+export default TV
