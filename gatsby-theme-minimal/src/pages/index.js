@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { graphql, StaticQuery } from "gatsby"
 import axios from "axios-jsonp"
 import jsonAdapter from "axios-jsonp"
 import { getData } from '../helpers/apicalls'
@@ -11,8 +12,9 @@ import ShoutTicker from '../components/shoutTicker'
 import PoweredToolsSlide from "../components/poweredToolsSlide"
 
 
-const IndexPage = () => {
+const IndexPage = (props) => {
   const gonationID = process.env.GONATIONID
+  const logo = props.logo
 
   // State where initial requests and data are stored 
   const [menuData, setMenuData] = useState({})
@@ -445,6 +447,7 @@ const IndexPage = () => {
               showcaseType="list"
               data={pile}
               showPrices={poweredToolsConfig.showPrices}
+              logo={logo}
             />
           ))
         break
@@ -492,3 +495,4 @@ const IndexPage = () => {
 }
 
 export default IndexPage
+

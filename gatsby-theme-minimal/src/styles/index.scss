@@ -1,10 +1,10 @@
 @import './variables.scss';
 @import './countdown.scss';
-@import '../../node_modules/bulma/bulma.sass';
+@import '../../../node_modules/bulma/bulma.sass';
 @import './sectionShowcase.scss';
 @import './listView.scss';
 @import './poweredTools.scss';
-@import '../../node_modules/animate.css/animate.min.css';
+@import '../../../node_modules/animate.css/animate.min.css';
 
 html {
     overflow: hidden;
@@ -20,14 +20,14 @@ p {
 }
 
 .carousel .slider-wrapper {
-  background: url('../images/wood.jpg');
+  background: url('../images/texture.jpg');
   background-position: center;
   background-size: cover;
 }
 
 .carousel .slider-wrapper {
     // padding: .5rem;
-    background: url('../images/wood.jpg');
+    background: url('../images/texture.jpg');
   background-position: center;
   background-size: cover;
     width: 100%;
