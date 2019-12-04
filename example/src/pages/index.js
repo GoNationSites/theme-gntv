@@ -1,5 +1,5 @@
 import React from "react"
-import Index from 'gatsby-theme-minimal/src/pages/index.js'
+import Index from 'theme-gntv/src/pages/index.js'
 import logo from '../images/logo.png'
 import '../styles.css'
 
