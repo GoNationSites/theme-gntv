@@ -1,8 +1,7 @@
 import React from "react"
 import Index from 'theme-gntv/src/pages/index.js'
-import logo from '../images/logo.png'
-import '../styles.css'
+import '../styles.scss'
 
 export default () => (
-    <Index className="gntv-local" logo={logo} />
+    <Index className="gntv-local" />
 )

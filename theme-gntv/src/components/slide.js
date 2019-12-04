@@ -9,7 +9,7 @@ import FullListView from "./fullListView"
 // showcaseType: default or list
 // slideStyleType: random, fullBG, Sidebyside -- Random by default
 
-const Slide = ({ data, showcaseType, slideStyleType, type, isTypeFlyer, showPrices, logo }) => {
+const Slide = ({ data, showcaseType, slideStyleType, type, isTypeFlyer, showPrices }) => {
   const [displayedSlide, setDisplayedSlide] = useState('')
   const [randomNumber, setRandomNumber] = useState(
     Math.floor(Math.random() * Math.floor(2))
@@ -88,7 +88,7 @@ const Slide = ({ data, showcaseType, slideStyleType, type, isTypeFlyer, showPric
 
   const getSlideStyle = () => {
     if (showcaseType === "list") {
-      return <FullListView logo={logo} data={data} />
+      return <FullListView data={data} />
     } else {
       // for some reason there is no photo
       switch (displayedSlide) {
@@ -131,7 +131,6 @@ const Slide = ({ data, showcaseType, slideStyleType, type, isTypeFlyer, showPric
               />
             )
           } else {
-            // add a console log here !!this is hacky 
             return (
               <FullImageBG
                 type={data.type}

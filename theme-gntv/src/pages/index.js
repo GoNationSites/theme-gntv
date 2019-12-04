@@ -12,9 +12,8 @@ import ShoutTicker from '../components/shoutTicker'
 import PoweredToolsSlide from "../components/poweredToolsSlide"
 
 
-const IndexPage = (props) => {
+const IndexPage = () => {
   const gonationID = process.env.GONATIONID
-  const logo = props.logo
 
   // State where initial requests and data are stored 
   const [menuData, setMenuData] = useState({})
@@ -447,7 +446,6 @@ const IndexPage = (props) => {
               showcaseType="list"
               data={pile}
               showPrices={poweredToolsConfig.showPrices}
-              logo={logo}
             />
           ))
         break
