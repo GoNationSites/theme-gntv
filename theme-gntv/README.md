@@ -1,4 +1,4 @@
-# The smallest possible Gatsby theme
+# GoNation TV Theme
 
 ## Quick Start
 
