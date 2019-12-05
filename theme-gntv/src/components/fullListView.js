@@ -10,7 +10,6 @@ const FullListView = props => {
     <div className="list-view-wrap" >
       <div className="logo-background">
         <img src={logo} alt="Logo"></img>
-        {/* <Img fixed={data.allFile.edges[2].node.childImageSharp.fixed} alt="name"></Img> */}
       </div>
       <div className="list-view-content-container">
         <h2 className="list-section-title is-size-1">{props.data[0].sectionName}</h2>
