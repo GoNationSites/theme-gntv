@@ -1,9 +1,10 @@
 {
-  "name": "@gonation/theme-gntv",
-  "version": "1.0.2",
+  "name": "@gonationcore/theme-gntv",
+  "version": "1.0.3",
   "main": "index.js",
   "author": "Eric Smith <eric@gonation.com>",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
