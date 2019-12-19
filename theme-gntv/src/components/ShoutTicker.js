@@ -8,7 +8,7 @@ const ShoutTicker = ({ shout }) => (
         <div className="columns is-vcentered">
             <div className="column is-2">
                 <h2 className="ticker-shout is-size-4">Recent Shout</h2>
-                <h2 className="is-size-6">Shouted: {dayjs(shout.date).format("MMMM dddd, HH:MM")}</h2>
+                <h2 className="is-size-6">Shouted: {dayjs(shout.date).format("dddd MMMM d, HH:MM")}</h2>
             </div>
 
 

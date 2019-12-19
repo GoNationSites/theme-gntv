@@ -1,6 +1,6 @@
 {
-  "name": "@gonationcore/theme-gntv",
-  "version": "1.0.1",
+  "name": "@gonation/theme-gntv",
+  "version": "1.0.2",
   "main": "index.js",
   "author": "Eric Smith <eric@gonation.com>",
   "license": "MIT",
