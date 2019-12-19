@@ -1,8 +1,8 @@
 {
   "name": "example",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "main": "index.js",
-  "author": "Eric Smith @GoNation",
+  "author": "Eric Smith @gonation",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
