@@ -13,7 +13,7 @@ import PoweredToolsSlide from "../components/poweredToolsSlide"
 
 
 const IndexPage = () => {
-  const gonationID = process.env.GONATIONID
+  const gonationID = process.env.GATSBY_GONATIONID
 
   // State where initial requests and data are stored 
   const [menuData, setMenuData] = useState({})
