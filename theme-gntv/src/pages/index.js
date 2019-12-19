@@ -379,9 +379,9 @@ const IndexPage = () => {
 
 
   useEffect(() => {
-    if (menuData.length && recurringData.length && eventData && shoutData && photoData) {
-      setIsLoading(false)
-    }
+    // if (menuData.length && recurringData.length && eventData && shoutData && photoData) {
+    setIsLoading(false)
+    // }
     if (!isLoading) {
       if (poweredToolsConfig.displayType !== "list") {
         setSlideData(
