@@ -9,8 +9,9 @@
     "build": "gatsby build"
   },
   "dependencies": {
+    "@gonationcore/theme-gntv": "^1.0.3",
     "gatsby": "^2.18.4",
-    "theme-gntv": "^1.0.0",
+    "gatsby-plugin-compile-es6-packages": "^2.1.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }
