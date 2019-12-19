@@ -4,7 +4,6 @@
   "main": "index.js",
   "author": "Eric Smith <eric@gonation.com>",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
