@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/eric/Documents/Work/gonationTV/gatsby-gntv-theme/gatsby-starter-theme-workspace/example/package.json: Unexpected token / in JSON at position 228
+  SyntaxError: /Users/eric/Documents/Work/gonationTV/gatsby-gntv-theme/gatsby-starter-theme-workspace/example/package.json: Unexpected token } in JSON at position 399
       at JSON.parse (<anonymous>)
       at /usr/local/lib/node_modules/yarn/lib/cli.js:1625:59
       at Generator.next (<anonymous>)
