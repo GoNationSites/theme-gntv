@@ -9,7 +9,7 @@
     "build": "gatsby build"
   },
   "dependencies": {
-    "@gonationcore/theme-gntv": "^1.0.6",
+    "@gonationcore/theme-gntv": "*",
     "gatsby": "^2.18.4",
     "gatsby-plugin-compile-es6-packages": "^2.1.0",
     "react": "^16.12.0",
