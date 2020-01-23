@@ -9,6 +9,7 @@ import Slide from '../components/slide'
 import slugify from '../helpers/slugify'
 import ShoutTicker from '../components/shoutTicker'
 import PoweredToolsSlide from '../components/poweredToolsSlide'
+import CustomRenderer from '../components/customRenderer'
 
 const TV = ({ pageContext }) => {
   const gonationID = process.env.GATSBY_GONATIONID
@@ -33,6 +34,8 @@ const TV = ({ pageContext }) => {
   const [formattedPhotos, setFormattedPhotos] = useState([])
   const [formattedShoutData, setFormattedShoutData] = useState([])
   const [sectionData, setSectionData] = useState([])
+
+  console.log('sectiondata: ', sectionData)
 
   // State for the powered tools
   // todo refactor all powered tools settings inside of a single object
@@ -479,7 +482,10 @@ const TV = ({ pageContext }) => {
         break
       case 'list':
         if (options.listType === 'custom') {
-          return paginatedItems(
+          console.log('inside this for')
+          const testData = [2, 5]
+          // set to 99, or arbitrary high number to keep all items within 1 section.
+          const sortedData = paginatedItems(
             99,
             sortFormattedMenu().filter(
               pile =>
@@ -487,18 +493,33 @@ const TV = ({ pageContext }) => {
                   pile.sectionName
                 )
             )
-          ).map((pile, idx) => {
-            console.log('the pile is: ', pile)
-            return (
-              <Slide
-                key={`${pile}-${idx}`}
-                slideStyleType={'sideBySideView'}
-                showcaseType="list"
-                data={pile}
-                showPrices={poweredToolsConfig.showPrices}
-              />
-            )
-          })
+          )
+
+          return (
+            sectionData &&
+            testData.map(page => {
+              const arr = new Array(page)
+              console.log('arr is: ', arr)
+              const newData = []
+              for (let i = 0; i < arr.length; i++) {
+                const toBePushed = sectionData.shift()
+                console.log('to be pushed: ', toBePushed)
+                newData.push(toBePushed)
+              }
+              console.log('new data is: ', newData)
+
+              return (
+                newData.length &&
+                newData[0] !== undefined && (
+                  <CustomRenderer
+                    data={newData}
+                    showPrices={poweredToolsConfig.showPrices}
+                    pages={testData}
+                  />
+                )
+              )
+            })
+          )
         } else {
           return paginatedItems(
             10,
@@ -547,7 +568,7 @@ const TV = ({ pageContext }) => {
           showArrows={false}
           showStatus={false}
           showIndicators={false}
-          transitionTime={poweredToolsConfig.displayType === 'list' ? 0 : 0}
+          transitionTime={poweredToolsConfig.displayType === 'list' ? 2000 : 0}
           interval={poweredToolsConfig.slideDuration}
           stopOnHover={false}
           infiniteLoop
