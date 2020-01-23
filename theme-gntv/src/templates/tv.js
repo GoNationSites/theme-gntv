@@ -10,8 +10,10 @@ import slugify from '../helpers/slugify'
 import ShoutTicker from '../components/shoutTicker'
 import PoweredToolsSlide from '../components/poweredToolsSlide'
 
-const IndexPage = () => {
+const TV = ({ pageContext }) => {
   const gonationID = process.env.GATSBY_GONATIONID
+  const { options } = pageContext
+  console.log(options.type)
 
   // State where initial requests and data are stored
   const [menuData, setMenuData] = useState({})
@@ -38,14 +40,14 @@ const IndexPage = () => {
   const [filteredOutAlbums, setFilteredOutAlbums] = useState([])
 
   const CONFIG = {
-    slideDuration: 15000, // good
-    showTicker: false, // good
-    showPrices: true, // good
-    activeTypes: ['item', 'event', 'shout', 'photo'], // good
-    displayType: 'default', // good
-    filteredOutSections: [], // good
-    eventItems: [], // good
-    flyerModeEvents: [], // good
+    slideDuration: 15000,
+    showTicker: false,
+    showPrices: true,
+    activeTypes: ['item', 'event', 'shout', 'photo'],
+    displayType: options.type === 'lite' ? 'list' : 'default',
+    filteredOutSections: [],
+    eventItems: [],
+    flyerModeEvents: [],
     albumNames: []
   }
   const [poweredToolsConfig, setPoweredToolsConfig] = useState(CONFIG)
@@ -409,6 +411,9 @@ const IndexPage = () => {
               .concat(formattedPhotos)
           )
         )
+      } else {
+        // If list view, we just need to worry about the menu data
+        setSlideData(formattedMenu)
       }
     }
   }, [
@@ -533,4 +538,4 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage
+export default TV
