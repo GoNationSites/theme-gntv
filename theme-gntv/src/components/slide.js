@@ -1,21 +1,28 @@
-import React, { useState, useEffect } from "react"
-import SideBySideView from "./SideBySideView"
-import FullImageBG from "./fullImageBg"
-import SectionShowcase from "./SectionShowcase"
-import optimizeImage from "../helpers/cloudinaryOptimization"
-import FullListView from "./fullListView"
+import React, { useState, useEffect } from 'react'
+import SideBySideView from './SideBySideView'
+import FullImageBG from './fullImageBg'
+import SectionShowcase from './SectionShowcase'
+import optimizeImage from '../helpers/cloudinaryOptimization'
+import FullListView from './fullListView'
 
 // data: data object
 // showcaseType: default or list
 // slideStyleType: random, fullBG, Sidebyside -- Random by default
 
-const Slide = ({ data, showcaseType, slideStyleType, type, isTypeFlyer, showPrices }) => {
+const Slide = ({
+  data,
+  showcaseType,
+  slideStyleType,
+  type,
+  isTypeFlyer,
+  showPrices
+}) => {
   const [displayedSlide, setDisplayedSlide] = useState('')
   const [randomNumber, setRandomNumber] = useState(
     Math.floor(Math.random() * Math.floor(2))
   )
-  const getDataType = () => (showcaseType === "list" ? "list" : slideStyleType)
-  const handleListType = () => { }
+  const getDataType = () => (showcaseType === 'list' ? 'list' : slideStyleType)
+  const handleListType = () => {}
 
   // generate random styles. Either full background or side by side view.
   const randomlyPickSlideStyle = () => {
@@ -23,11 +30,11 @@ const Slide = ({ data, showcaseType, slideStyleType, type, isTypeFlyer, showPric
       setDisplayedSlide('fullImageBG')
     } else {
       if (randomNumber == 0) {
-        setDisplayedSlide("sideBySideView")
+        setDisplayedSlide('sideBySideView')
       } else if (randomNumber == 1) {
-        setDisplayedSlide("fullImageBG")
+        setDisplayedSlide('fullImageBG')
       } else {
-        setDisplayedSlide("fullImageBG")
+        setDisplayedSlide('fullImageBG')
       }
     }
   }
@@ -35,14 +42,14 @@ const Slide = ({ data, showcaseType, slideStyleType, type, isTypeFlyer, showPric
   const handleSimpleData = () => {
     // event data can be showcased with a full background or side by side view. Events can either be of type recurring or regular. They are both similar except regular get a countdown and recurring does not.
     switch (slideStyleType) {
-      case "random":
+      case 'random':
         randomlyPickSlideStyle()
         break
-      case "fullImageBG":
-        setDisplayedSlide("fullImageBG")
+      case 'fullImageBG':
+        setDisplayedSlide('fullImageBG')
         break
-      case "sideBySideView":
-        setDisplayedSlide("sideBySideView")
+      case 'sideBySideView':
+        setDisplayedSlide('sideBySideView')
         break
     }
   }
@@ -50,23 +57,23 @@ const Slide = ({ data, showcaseType, slideStyleType, type, isTypeFlyer, showPric
   // handle slides based on data type
   const handleDefaultType = () => {
     switch (type) {
-      case "event":
-        handleSimpleData("event")
+      case 'event':
+        handleSimpleData('event')
         break
-      case "item":
-        handleSimpleData("item")
+      case 'item':
+        handleSimpleData('item')
         break
-      case "shout":
-        handleSimpleData("shout")
+      case 'shout':
+        handleSimpleData('shout')
         break
-      case "section":
-        setDisplayedSlide("sectionShowcase")
+      case 'section':
+        setDisplayedSlide('sectionShowcase')
         break
-      case "photo":
+      case 'photo':
         handleSimpleData('photo')
         break
       default:
-        console.error("error: unknown data type::", type)
+        console.error('error: unknown data type::', type)
         break
     }
   }
@@ -74,7 +81,7 @@ const Slide = ({ data, showcaseType, slideStyleType, type, isTypeFlyer, showPric
   // check if showcaseType is list, section, or default
   const handleStyleType = () => {
     switch (showcaseType) {
-      case "list":
+      case 'list':
         getSlideStyle()
         break
       default:
@@ -87,45 +94,44 @@ const Slide = ({ data, showcaseType, slideStyleType, type, isTypeFlyer, showPric
   }, [isTypeFlyer])
 
   const getSlideStyle = () => {
-    if (showcaseType === "list") {
-      return <FullListView data={data} />
+    if (showcaseType === 'list') {
+      return <FullListView data={data} showPrices={showPrices} />
     } else {
       // for some reason there is no photo
       switch (displayedSlide) {
-
-        case "fullImageBG":
+        case 'fullImageBG':
           return (
             <FullImageBG
               type={data.type}
               title={data.name}
               description={data.description}
-              price={data.price ? data.price : ""}
+              price={data.price ? data.price : ''}
               image={optimizeImage(data.image, 2000)}
-              eventDays={data.days ? data.days : ""}
+              eventDays={data.days ? data.days : ''}
               starts={data.starts}
               ends={data.ends}
               eventType={data.eventType}
               textPositioningId={Math.floor(Math.random() * Math.floor(2))}
-              shoutedAt={data.shoutedAt ? data.shoutedAt : ""}
+              shoutedAt={data.shoutedAt ? data.shoutedAt : ''}
               isTypeFlyer={isTypeFlyer}
               showPrices={showPrices}
             />
           )
-        case "sideBySideView":
+        case 'sideBySideView':
           if (data.type !== 'photo') {
             return (
               <SideBySideView
                 type={data.type}
                 title={data.name}
                 description={data.description}
-                price={data.price ? data.price : ""}
+                price={data.price ? data.price : ''}
                 image={optimizeImage(data.image, 2000)}
-                eventDays={data.days ? data.days : ""}
+                eventDays={data.days ? data.days : ''}
                 starts={data.starts}
                 ends={data.ends}
                 textPositioning="right"
                 isTypeCard={false}
-                shoutedAt={data.shoutedAt ? data.shoutedAt : ""}
+                shoutedAt={data.shoutedAt ? data.shoutedAt : ''}
                 eventType={data.eventType}
                 showPrices={showPrices}
               />
@@ -136,20 +142,20 @@ const Slide = ({ data, showcaseType, slideStyleType, type, isTypeFlyer, showPric
                 type={data.type}
                 title={data.name}
                 description={data.description}
-                price={data.price ? data.price : ""}
+                price={data.price ? data.price : ''}
                 image={optimizeImage(data.image, 2000)}
-                eventDays={data.days ? data.days : ""}
+                eventDays={data.days ? data.days : ''}
                 starts={data.starts}
                 ends={data.ends}
                 eventType={data.eventType}
                 textPositioningId={Math.floor(Math.random() * Math.floor(2))}
-                shoutedAt={data.shoutedAt ? data.shoutedAt : ""}
+                shoutedAt={data.shoutedAt ? data.shoutedAt : ''}
                 showPrices={showPrices}
               />
             )
           }
 
-        case "sectionShowcase":
+        case 'sectionShowcase':
           return (
             <SectionShowcase
               items={data.items}
@@ -162,7 +168,10 @@ const Slide = ({ data, showcaseType, slideStyleType, type, isTypeFlyer, showPric
 
   return (
     <React.Fragment>
-      <div className="slide-overlay">{(showcaseType === 'list' || displayedSlide !== '') && getSlideStyle(type)}</div>
+      <div className="slide-overlay">
+        {(showcaseType === 'list' || displayedSlide !== '') &&
+          getSlideStyle(type)}
+      </div>
     </React.Fragment>
   )
 }
