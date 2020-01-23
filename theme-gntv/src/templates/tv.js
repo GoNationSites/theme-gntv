@@ -328,6 +328,7 @@ const TV = ({ pageContext }) => {
         }
       }
     })
+    paginatedItemsArr.push(tmpArr)
     return paginatedItemsArr
   }
 
@@ -477,21 +478,47 @@ const TV = ({ pageContext }) => {
         })
         break
       case 'list':
-        return paginatedItems(
-          10,
-          sortFormattedMenu().filter(
-            pile =>
-              !poweredToolsConfig.filteredOutSections.includes(pile.sectionName)
-          )
-        ).map((pile, idx) => (
-          <Slide
-            key={`${pile}-${idx}`}
-            slideStyleType={'sideBySideView'}
-            showcaseType="list"
-            data={pile}
-            showPrices={poweredToolsConfig.showPrices}
-          />
-        ))
+        if (options.listType === 'custom') {
+          return paginatedItems(
+            99,
+            sortFormattedMenu().filter(
+              pile =>
+                !poweredToolsConfig.filteredOutSections.includes(
+                  pile.sectionName
+                )
+            )
+          ).map((pile, idx) => {
+            console.log('the pile is: ', pile)
+            return (
+              <Slide
+                key={`${pile}-${idx}`}
+                slideStyleType={'sideBySideView'}
+                showcaseType="list"
+                data={pile}
+                showPrices={poweredToolsConfig.showPrices}
+              />
+            )
+          })
+        } else {
+          return paginatedItems(
+            10,
+            sortFormattedMenu().filter(
+              pile =>
+                !poweredToolsConfig.filteredOutSections.includes(
+                  pile.sectionName
+                )
+            )
+          ).map((pile, idx) => (
+            <Slide
+              key={`${pile}-${idx}`}
+              slideStyleType={'sideBySideView'}
+              showcaseType="list"
+              data={pile}
+              showPrices={poweredToolsConfig.showPrices}
+            />
+          ))
+        }
+
         break
       case 'both':
 

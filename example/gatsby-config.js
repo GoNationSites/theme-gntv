@@ -5,7 +5,7 @@ module.exports = {
       options: {
         gonationID: 'bzn-3hU27AHwSp_8zR1zGI3qlg',
         type: 'lite',
-        listType: 'lite'
+        listType: 'custom'
       }
     },
     {
