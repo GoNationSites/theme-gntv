@@ -1,5 +1,5 @@
-import React from "react"
-import Checkbox from "./checkBox"
+import React from 'react'
+import Checkbox from './checkBox'
 
 const ActiveTypesForm = ({ handleAdd, handleRemoval }) => {
   return (
@@ -8,26 +8,26 @@ const ActiveTypesForm = ({ handleAdd, handleRemoval }) => {
       <Checkbox
         handleAdd={handleAdd}
         handleRemoval={handleRemoval}
-        name={"contentType"}
-        value={"item"}
+        name={'contentType'}
+        value={'item'}
       />
       <Checkbox
         handleAdd={handleAdd}
         handleRemoval={handleRemoval}
-        name={"contentType"}
-        value={"event"}
+        name={'contentType'}
+        value={'event'}
       />
       <Checkbox
         handleAdd={handleAdd}
         handleRemoval={handleRemoval}
-        name={"contentType"}
-        value={"shout"}
+        name={'contentType'}
+        value={'shout'}
       />
       <Checkbox
         handleAdd={handleAdd}
         handleRemoval={handleRemoval}
-        name={"contentType"}
-        value={"photo"}
+        name={'contentType'}
+        value={'photo'}
       />
     </div>
   )

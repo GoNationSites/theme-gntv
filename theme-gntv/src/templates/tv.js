@@ -39,12 +39,14 @@ const TV = ({ pageContext }) => {
   const [albumNames, setAlbumNames] = useState([])
   const [filteredOutAlbums, setFilteredOutAlbums] = useState([])
 
+  const isLite = options.type === 'lite'
+
   const CONFIG = {
     slideDuration: 15000,
     showTicker: false,
     showPrices: true,
-    activeTypes: ['item', 'event', 'shout', 'photo'],
-    displayType: options.type === 'lite' ? 'list' : 'default',
+    activeTypes: isLite ? ['item'] : ['item', 'event', 'shout', 'photo'],
+    displayType: isLite ? 'list' : 'default',
     filteredOutSections: [],
     eventItems: [],
     flyerModeEvents: [],
@@ -502,6 +504,7 @@ const TV = ({ pageContext }) => {
   return (
     <Layout>
       <PoweredToolsSlide
+        formRestrictions={options.type}
         listData={sectionData}
         eventTypes={getEventTypes()}
         albumNames={albumNames}
