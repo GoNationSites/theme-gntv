@@ -14,7 +14,6 @@ import CustomRenderer from '../components/customRenderer'
 const TV = ({ pageContext }) => {
   const gonationID = process.env.GATSBY_GONATIONID
   const { options } = pageContext
-  console.log(options.type)
 
   // State where initial requests and data are stored
   const [menuData, setMenuData] = useState({})
@@ -34,6 +33,7 @@ const TV = ({ pageContext }) => {
   const [formattedPhotos, setFormattedPhotos] = useState([])
   const [formattedShoutData, setFormattedShoutData] = useState([])
   const [sectionData, setSectionData] = useState([])
+  const [testing, setTesting] = useState([])
 
   console.log('sectiondata: ', sectionData)
 
@@ -178,7 +178,8 @@ const TV = ({ pageContext }) => {
   const sortedSections = []
 
   const buildSortedSectionData = data => {
-    data.forEach((item, itmID) => {
+    console.log('BUILDING SORTED SECTION', formattedMenuDataArr)
+    formattedMenuDataArr.forEach((item, itmID) => {
       let sectionExists = true
       // For the first time through, we automatically populate the array
       if (sortedSections.length === 0) {
@@ -197,10 +198,11 @@ const TV = ({ pageContext }) => {
       } else {
         sortedSections.forEach((section, secID) => {
           if (slugify(item.sectionName) === slugify(section.name)) {
+            console.log('items!!1: ', section)
             sectionExists = true
             section.items.push({
               name: item.name,
-              description: item.desc,
+              description: item.description,
               price: item.variants,
               image: item.image
             })
@@ -215,7 +217,7 @@ const TV = ({ pageContext }) => {
             items: [
               {
                 name: item.name,
-                description: item.desc,
+                description: item.description,
                 price: item.variants,
                 image: item.image
               }
@@ -335,6 +337,11 @@ const TV = ({ pageContext }) => {
     return paginatedItemsArr
   }
 
+  const getSortedSections = () => {
+    console.log('returning sorted sections: ', sortedSections)
+    return sortedSections
+  }
+
   const formatPhotoData = () => {
     const arr = []
     photoData.forEach(album => {
@@ -363,6 +370,7 @@ const TV = ({ pageContext }) => {
       menuData.length
     ) {
       runMenu()
+      buildSortedSectionData()
     }
     if (
       poweredToolsConfig.activeTypes.includes('event') &&
@@ -389,7 +397,9 @@ const TV = ({ pageContext }) => {
     shoutData,
     poweredToolsConfig.displayType,
     poweredToolsConfig.activeTypes,
-    photoData
+    photoData,
+    poweredToolsConfig.slideDuration,
+    poweredToolsConfig.showPrices
   ])
 
   const shuffleData = a => {
@@ -418,8 +428,12 @@ const TV = ({ pageContext }) => {
           )
         )
       } else {
-        // If list view, we just need to worry about the menu data
+        // If list view, we just need to worry about the menu dataa
+        // setSectionData()
+
+        sectionData.length && runMenu()
         setSlideData(formattedMenu)
+        console.log('slide data is: ', slideData)
       }
     }
   }, [
@@ -429,7 +443,8 @@ const TV = ({ pageContext }) => {
     shoutData,
     poweredToolsConfig.displayType,
     poweredToolsConfig.activeTypes,
-    formattedPhotos
+    formattedPhotos,
+    menuData
   ])
 
   // USEEFFECT: we reRender when active types array changes
@@ -481,45 +496,38 @@ const TV = ({ pageContext }) => {
         })
         break
       case 'list':
-        if (options.listType === 'custom') {
-          console.log('inside this for')
+        console.log('here@!')
+        const sectionCopy = sectionData
+        let hasBeen = false
+
+        console.log('section copy: ', sectionCopy)
+        if (options.listType === 'custom' && hasBeen === false) {
           const testData = [2, 5]
-          // set to 99, or arbitrary high number to keep all items within 1 section.
-          const sortedData = paginatedItems(
-            99,
-            sortFormattedMenu().filter(
-              pile =>
-                !poweredToolsConfig.filteredOutSections.includes(
-                  pile.sectionName
-                )
-            )
-          )
+          hasBeen = true
 
-          return (
-            sectionData &&
-            testData.map(page => {
-              const arr = new Array(page)
-              console.log('arr is: ', arr)
-              const newData = []
-              for (let i = 0; i < arr.length; i++) {
-                const toBePushed = sectionData.shift()
-                console.log('to be pushed: ', toBePushed)
-                newData.push(toBePushed)
-              }
-              console.log('new data is: ', newData)
+          return testData.map((page, idx) => {
+            const arr = new Array(page)
+            console.log('arr isss: ', arr)
+            const newData = []
+            for (let i = 0; i < arr.length; i++) {
+              const toBePushed = sectionCopy.shift()
+              console.log('to be pushedd: ', toBePushed)
+              newData.push(toBePushed)
+            }
 
-              return (
-                newData.length &&
-                newData[0] !== undefined && (
-                  <CustomRenderer
-                    data={newData}
-                    showPrices={poweredToolsConfig.showPrices}
-                    pages={testData}
-                  />
-                )
+            console.log('testing: ', testing)
+
+            return (
+              newData[0] !== undefined && (
+                <CustomRenderer
+                  data={newData}
+                  showPrices={poweredToolsConfig.showPrices}
+                  pages={testData}
+                  pageNumber={idx}
+                />
               )
-            })
-          )
+            )
+          })
         } else {
           return paginatedItems(
             10,
@@ -539,8 +547,8 @@ const TV = ({ pageContext }) => {
             />
           ))
         }
-
         break
+
       case 'both':
 
       default:
@@ -568,13 +576,14 @@ const TV = ({ pageContext }) => {
           showArrows={false}
           showStatus={false}
           showIndicators={false}
-          transitionTime={poweredToolsConfig.displayType === 'list' ? 2000 : 0}
+          transitionTime={poweredToolsConfig.displayType === 'list' ? 0 : 0}
           interval={poweredToolsConfig.slideDuration}
           stopOnHover={false}
           infiniteLoop
           autoPlay={poweredToolsConfig.eventItems.length === 1 ? false : true}
+          autoPlay={false}
           emulateTouch={true}>
-          {!isLoading && handleRender()}
+          {!isLoading && sectionData.length && handleRender()}
         </Carousel>
       ) : (
         ''

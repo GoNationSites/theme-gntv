@@ -1,40 +1,34 @@
 import React, { useState } from 'react'
-import logo from '../images/logo.png'
+// import logo from '../images/logo.png'
+
 const CustomRenderer = props => {
+  const { data } = props
+  console.log('my data', data)
   return (
     <div className="list-view-wrap">
-      <div className="logo-background">
+      {/* <div
+        className="logo-background"
+        style={{ pointerEvents: 'none', zIndex: -1 }}>
         <img src={logo} alt="Logo"></img>
-      </div>
-      {props.data.map(node => {
-        return node ? <h1 className="has-text-white">{node.name}</h1> : ''
-      })}
-
-      {/* <div className="list-view-content-container">
-        <h2 className="list-section-title is-size-1">
-          {props.data[0].sectionName}
-        </h2>
-        <div className="list-parent">
-          {props.data.map((item, idx) => (
-            <div
-              key={`${item}-${idx}`}
-              className="item-block  columns is-vcentered is-paddingless is-marginless">
-              <div className="list-item-content column">
-                <h3>
-                  <span className="list-item-name is-size-3">
-                    {item.name}{' '}
-                    {showPrices && item.price.length
-                      ? `$ ${item.price[0].price}`
-                      : ''}
-                  </span>
-                </h3>
-                <p className="list-item-description">{item.description}</p>
-                <p className="list-item-price"></p>
-              </div>
-            </div>
-          ))}
-        </div>
       </div> */}
+      <section
+        className={`custom-page-wrapper custom-page-wrapper__${props.pageNumber +
+          1}`}>
+        {data.map((node, idx) => (
+          <div className={`custom-page-child custom-page-child__${idx + 1}`}>
+            <h1 className="custom-page-title">{node.name}</h1>
+
+            <div className={`custom-page-items`}>
+              {node.items.map(item => (
+                <div className="custom-page-item">
+                  <p className={`custom-page-item__name`}>{item.name}</p>
+                  <p>{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
     </div>
   )
 }
