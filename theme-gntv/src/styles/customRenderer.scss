@@ -47,9 +47,10 @@ $itemFont: 'Oswald', sans-serif;
     .custom-page-items {
       height: auto;
       flex-direction: row;
+      justify-content: space-between;
       .custom-page-item {
         padding: 0.5rem 0;
-        padding-right: 0.5rem;
+        width: 33%;
         .custom-page-item__name {
           color: black;
         }
