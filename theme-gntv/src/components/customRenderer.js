@@ -21,8 +21,14 @@ const CustomRenderer = props => {
             <div className={`custom-page-items`}>
               {node.items.map(item => (
                 <div className="custom-page-item">
-                  <p className={`custom-page-item__name`}>{item.name}</p>
-                  <p>{item.description}</p>
+                  <p className={`custom-page-item__name`}>
+                    {item.name}{' '}
+                    <span className={`custom-page-item__price`}></span>
+                    {item.price ? item.price[0].price : ''}
+                  </p>
+                  <p className={`custom-page-item__description`}>
+                    {item.description}
+                  </p>
                 </div>
               ))}
             </div>

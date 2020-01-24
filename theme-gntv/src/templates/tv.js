@@ -145,6 +145,7 @@ const TV = ({ pageContext }) => {
 
   const formattedMenuDataArr = []
   const buildSection = element => {
+    console.log(element)
     if (element.inventory) {
       element.inventory.forEach(item => {
         if (!item.section) {
@@ -181,6 +182,7 @@ const TV = ({ pageContext }) => {
     console.log('BUILDING SORTED SECTION', formattedMenuDataArr)
     formattedMenuDataArr.forEach((item, itmID) => {
       let sectionExists = true
+      console.log(item, '!!')
       // For the first time through, we automatically populate the array
       if (sortedSections.length === 0) {
         sortedSections.push({
@@ -189,8 +191,8 @@ const TV = ({ pageContext }) => {
           items: [
             {
               name: item.name,
-              description: item.desc,
-              price: item.variants,
+              description: item.description,
+              price: item.price,
               image: item.image
             }
           ]
@@ -198,12 +200,11 @@ const TV = ({ pageContext }) => {
       } else {
         sortedSections.forEach((section, secID) => {
           if (slugify(item.sectionName) === slugify(section.name)) {
-            console.log('items!!1: ', section)
             sectionExists = true
             section.items.push({
               name: item.name,
               description: item.description,
-              price: item.variants,
+              price: item.price,
               image: item.image
             })
           } else {
@@ -218,7 +219,7 @@ const TV = ({ pageContext }) => {
               {
                 name: item.name,
                 description: item.description,
-                price: item.variants,
+                price: item.price,
                 image: item.image
               }
             ]
@@ -581,7 +582,6 @@ const TV = ({ pageContext }) => {
           stopOnHover={false}
           infiniteLoop
           autoPlay={poweredToolsConfig.eventItems.length === 1 ? false : true}
-          autoPlay={false}
           emulateTouch={true}>
           {!isLoading && sectionData.length && handleRender()}
         </Carousel>

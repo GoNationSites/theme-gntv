@@ -1,6 +1,9 @@
 $primary: rgb(255, 109, 0);
 $secondary: rgb(13, 162, 186);
 
+$headingFont: 'Playfair Display SC', serif;
+$itemFont: 'Oswald', sans-serif;
+
 .custom-container {
   height: 100%;
 }
@@ -15,14 +18,56 @@ $secondary: rgb(13, 162, 186);
   padding-bottom: 4rem;
 }
 
-.custom-page-child__1 {
-  grid-column: 1 / 3;
-  grid-row: 1 / 4;
+.custom-page-wrapper__1 {
+  .custom-page-child__1 {
+    grid-column: 1 / 3;
+    grid-row: 1 / 4;
+    border: 7px solid $secondary;
+    border-radius: 7px;
+    padding: 2rem;
+
+    .custom-page-items {
+      padding: 2rem;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .custom-page-child__2 {
+    grid-column: 3 / 4;
+    grid-row: 1 / 4;
+    padding: 0 2rem;
+  }
 }
 
-.custom-page-child__2 {
-  grid-column: 3 / 4;
-  grid-row: 1 / 4;
+.custom-page-wrapper__2 {
+  .custom-page-child__4 {
+    grid-column: 2 / 4;
+
+    .custom-page-items {
+      height: auto;
+      flex-direction: row;
+      .custom-page-item {
+        padding: 0.5rem 0;
+        padding-right: 0.5rem;
+        .custom-page-item__name {
+          color: black;
+        }
+      }
+    }
+  }
+  .custom-page-child__5 {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    .custom-page-items {
+      height: auto;
+      flex-direction: row;
+      .custom-page-item {
+        padding-top: 0.5rem;
+        padding-right: 0.5rem;
+      }
+    }
+  }
 }
 
 .custom-page-items {
@@ -33,17 +78,30 @@ $secondary: rgb(13, 162, 186);
 }
 
 .custom-page-item {
-  max-width: 300px;
+  max-width: 450px;
   text-align: left;
   font-weight: bold;
+  padding-bottom: 1.75rem;
+  text-transform: uppercase;
 }
 
 .custom-page-title {
+  font-weight: bold;
   text-align: left;
   color: $secondary;
+  font-family: $headingFont;
+  font-size: 5rem;
 }
 
 .custom-page-item__name {
   color: $primary;
   font-weight: bold;
+  font-family: $itemFont;
+  font-size: 2rem;
+}
+
+.custom-page-item__description {
+  font-family: $itemFont;
+  font-weight: bold;
+  color: black;
 }

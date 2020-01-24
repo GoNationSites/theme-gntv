@@ -13,6 +13,13 @@ module.exports = {
       options: {
         modules: [`@gonationcore/theme-gntv`]
       }
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`Playfair Display SC\:400,700,900`, `Oswald\:400,700`],
+        display: 'swap'
+      }
     }
   ]
 }

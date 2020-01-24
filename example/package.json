@@ -12,6 +12,7 @@
     "@gonationcore/theme-gntv": "*",
     "gatsby": "^2.18.4",
     "gatsby-plugin-compile-es6-packages": "^2.1.0",
+    "gatsby-plugin-google-fonts": "^1.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }
